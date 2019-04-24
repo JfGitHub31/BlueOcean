@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章详情页面</title>
+</head>
+<body>
+<h1>文章详情页面</h1>
+<div>{{article.author.realname}}的文章</div>
+<h3>
+    {{article.title}}
+    <small>作者:{{article.author.realname}} | 阅读次数:{{article.read_count}}</small>
+</h3>
+<p>
+{% ifequal request.session.login_user.username article.author.username%}
+<p>
+    <a href="/article/{{article.id}}/update/">编辑文章</a>
+    <a href="/article/{{article.id}}/delete/">删除文章</a>
+</p>
+{% endifequal %}
+<p>
+    {{article.content}}
+</p>
+</body>
+</html>

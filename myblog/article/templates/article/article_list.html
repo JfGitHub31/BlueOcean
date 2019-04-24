@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表页面</title>
+</head>
+<body>
+<h1>我的文章列表</h1>
+
+<div>
+    <ul>
+        {% for article in article_list %}
+        <li><a href="/article/{{article.id}}/detail/">{{article.title}}</a></li>
+        {% empty %}
+        <li>你还没有发表过文章哦~</li>
+        {% endfor%}
+    </ul>
+</div>
+
+</body>
+</html>

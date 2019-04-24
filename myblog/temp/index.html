@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客首页</title>
+</head>
+<body>
+
+<h1>博客首页</h1>
+
+<ul>
+    {% if request.session.login_user %}
+    <li>尊敬的{{request.session.login_user.realname}}, 欢迎访问博客</li>
+    <li><a href="/author/logout/">安全退出</a></li>
+    <li><a href="/author/{{request.session.login_user.id}}">我的首页</a></li>
+    {% else %}
+    <li><a href="/author/login/">登录</a></li>
+    <li><a href="/author/register/">新用户注册</a></li>
+    {% endif %}
+</ul>
+
+<div>
+    <div>热门博主</div>
+    <div>
+        {% for author in author_list %}
+        <img src="/{{author.header_img}}" alt="{{author.realname}}" width="70px" height="70px">
+        <div>
+            {% if author.realname %}
+            {{author.realname}}
+            {% else %}
+            匿名者
+            {% endif %}
+            <p>
+                <a href="/author/{{author.id}}/">查看ta的首页</a>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+</body>
+</html>

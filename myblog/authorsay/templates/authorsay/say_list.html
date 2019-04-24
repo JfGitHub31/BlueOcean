@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发表说说页面</title>
+</head>
+<body>
+
+<div>
+    <div>{{author.realname}}的说说</div>
+    <div>
+        {% if request.session.login_user.username == author.username %}
+        <form method="POST" action="/authorsay/{{author.id}}/">
+            {% csrf_token %}
+            <textarea name="say_content" id="say_content" cols="30" rows="5">说说内容</textarea>
+            <button type="submit">发表说说</button>
+        </form>
+        {% endif %}
+
+        <ul>
+            {% for say in say_list %}
+            <li>
+                <div>
+                    <div><img src="/{{say.author.header_img}}" width="70px" height="70px"></div>
+                    <div>
+                        <h4>{{say.author.realname}}</h4>
+                        <p>{{say.say_time|date:'Y-m-d H:i:s'}}</p>
+                        {{say.content}}
+                        <a href="/authorsay/{{say.id}}/delete/">删除说说</a>
+                    </div>
+                </div>
+            </li>
+            {% empty %}
+            <li>当前用户没有发表任何说说</li>
+            {% endfor %}
+        </ul>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
