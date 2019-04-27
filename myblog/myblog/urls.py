@@ -32,5 +32,8 @@ urlpatterns = [
     url(r'^authorsay/', include('authorsay.urls')),
 
     # 留言板app
-    url(r'^message/', include('message.urls'))
+    url(r'^message/', include('message.urls')),
+
+    # 相册app
+    url(r'^album/', include('album.urls')),
 ]

@@ -14,6 +14,10 @@
     <li><a href="/article/publish/">发表文章</a></li>
     <li><a href="/article/{{author.id}}/article_list/">我的博文</a></li>
     <li><a href="/authorsay/{{request.session.login_user.id}}">我的说说</a></li>
+    <li><a href="/message/{{request.session.login_user.id}}">我的留言板</a></li>
+    <li><a href="/album/{{request.session.login_user.id}}">我的相册</a></li>
+    <li><a href="/album/album_create/">创建相册</a></li>
+
     {% endif %}
 </ul>
 </div>

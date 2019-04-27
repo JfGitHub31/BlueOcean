@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'author',  # 作者
     'article',  # 文章
-    'authorsay'  # 说说
-    'message'  # 留言板
+    'authorsay',  # 说说
+    'message',  # 留言板
+    'album',  # 相册
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+

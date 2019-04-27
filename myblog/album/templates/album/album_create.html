@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建相册页面</title>
+</head>
+<body>
+<h1>相册创建页面</h1>
+
+<div>
+    <form method="POST" action="/album/album_create/">
+        {% csrf_token %}
+        输入相册名字:<input type="text" name="name" id="name">
+        <p>
+        输入相册封面:<input type="file" name="cover" id="cover">
+        <p>
+        <button type="submit">创建相册</button>
+    </form>
+
+</div>
+
+
+</body>
+</html>
