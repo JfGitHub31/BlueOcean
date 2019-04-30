@@ -5,29 +5,19 @@
     <title>相册详情页面</title>
 </head>
 <body>
+
 <h1>相册详情页面</h1>
 
 <div>
-    <img src="/{{album.cover}}" />
-    <h5>相册名称</h5>
-    <p>{{album.name}}</p>
-
     <div>
-        <h5>创建时间</h5>
-        <p>{{album.create_time|date:'Y-m-d G:i:s'}}</p>
+        <img src="/{{album.cover}}">
     </div>
+    <div>相册名称:{{album.name}}</div>
 
-    <div>
-        <h5>照片数量</h5>
-        <p>{{album.photo_count}}</p>
-    </div>
-
-    <div>
-        <h5>相册描述</h5>
-        <p>{% firstof album.remark '待完善' %}</p>
-    </div>
-
-    <div><a href="">点击查看相册</a></div>
+    <div>创建时间:{{album.create_time|date:'Y-m-d G:i:s'}}</div>
+    <div>照片数量:{{album.photo_count}}</div>
+    <div>相册描述:{% firstof album.remark '你还没有添加描述哦～'%}</div>
+    <div><a href="/photo/{{album.id}}">查看相册</a></div>
 </div>
 
 </body>

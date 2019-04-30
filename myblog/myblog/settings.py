@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'authorsay',  # 说说
     'message',  # 留言板
     'album',  # 相册
+    'photo',  # 照片
 ]
 
 MIDDLEWARE = [

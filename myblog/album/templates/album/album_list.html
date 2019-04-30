@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>相册列表页面</title>
 </head>
 <body>
+<h1>相册列表页面</h1>
 
+<div>
+    {% for album in album_list %}
+    <div><img src="/{{album.cover}}" width="70" height="70"/></div>
+
+    <div>{{album.name}}</div>
+    <div>{{album.create_time|date:'Y-m-d G:i:s'}}</div>
+    <div><a href="/photo/{{album.id}}">查看相册</a></div>
+    {% empty %}
+    <div>当前用户还没有创建相册</div>
+    {% endfor %}
+
+</div>
 </body>
 </html>

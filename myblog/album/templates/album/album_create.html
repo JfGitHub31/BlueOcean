@@ -5,20 +5,21 @@
     <title>创建相册页面</title>
 </head>
 <body>
-<h1>相册创建页面</h1>
-
+<h1>创建相册页面</h1>
 <div>
-    <form method="POST" action="/album/album_create/">
+    <h1>{{msg}}</h1>
+    <form method="POST" action="/album/album_create/" enctype="multipart/form-data">
         {% csrf_token %}
-        输入相册名字:<input type="text" name="name" id="name">
+        相册名称: <input type="text" name="name" id="name">
         <p>
-        输入相册封面:<input type="file" name="cover" id="cover">
+        相册封面: <input type="file" id="cover" name="cover">
+        <p>
+        相册描述: <textarea name="remark" id="remark">描述下你的相册吧~</textarea>
         <p>
         <button type="submit">创建相册</button>
+
     </form>
-
 </div>
-
 
 </body>
 </html>
