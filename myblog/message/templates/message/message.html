@@ -26,6 +26,7 @@
         </div>
 
         {{msg.content}}
+        <div><a href="/message/{{msg.id}}/delete/">删除留言</a></div>
         {% empty %}
         当前用户没有任何留言
         {% endfor %}

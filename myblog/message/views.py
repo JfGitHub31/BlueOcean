@@ -37,7 +37,13 @@ def message_delete(request, msg_id):
     :param msg_id:
     :return:
     """
-    pass
+    message = models.Message.objects.get(pk=msg_id)
+    author = message.receive_author
+    message.delete()
+
+    return redirect(reverse('message', kwargs={'author_id': author.id}))
+
+
 
 
 

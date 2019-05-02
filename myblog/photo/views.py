@@ -28,8 +28,12 @@ def photo_upload(request, album_id):
         return render(request, 'photo/photo_upload.html', {'album': album})
     elif request.method == "POST":
         # 获取数据
-        path = request.FILES['path']
-        name = request.POST['name']
+        path = request.FILES.get('path')
+        name = request.POST.get('name')
+        if path is None:
+            return render(request, 'photo/photo_upload.html', {'msg': "相片不能为空"})
+
+
 
         # 创建并保存照片
         photo = models.Photo(name=name, path=path, album=album)
@@ -52,3 +56,18 @@ def photo_detail(request, photo_id):
     """
     photo = models.Photo.objects.get(pk=photo_id)
     return render(request, 'photo/photo_detail.html', {'photo': photo})
+
+
+def photo_delete(request, photo_id):
+    """
+    删除照片
+    :param request:
+    :param photo_id:
+    :return:
+    """
+    photo = models.Photo.objects.get(pk=photo_id)
+    album = photo.album
+    print("album_id--->", album.id)
+    photo.delete()
+
+    return redirect(reverse("photo_list", kwargs={"album_id": album.id}))

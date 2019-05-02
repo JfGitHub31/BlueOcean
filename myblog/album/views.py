@@ -52,3 +52,20 @@ def album_list(requset, author_id):
     author = Author.objects.get(pk=author_id)
     album_list = models.Album.objects.filter(author=author).order_by('-create_time')
     return render(requset, 'album/album_list.html', {'author': author, 'album_list': album_list})
+
+
+def album_delete(request, album_id):
+    """
+    删除相册
+    :param request:
+    :param album_id:
+    :return:
+    """
+    album = models.Album.objects.get(pk=album_id)
+    author = album.author
+    print('author_id---->', author.id)
+    album.delete()
+
+    return redirect(reverse('album:album_list', kwargs={'author_id': author.id}))
+
+

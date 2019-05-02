@@ -18,7 +18,7 @@ class Author(models.Model):
     userpass = models.CharField(max_length=50, verbose_name="登录密码")
     realname = models.CharField(max_length=50, verbose_name="作者姓名")
     header_img = models.ImageField(upload_to="static/images/headers/", default="static/images/headers/default.jpg")
-    age = models.IntegerField(default=0, verbose_name="作者年龄", null=True, blank=True)
+    age = models.CharField(max_length=20, verbose_name="作者年龄", null=True, blank=True)
     gender = models.CharField(max_length=5, verbose_name="作者性别", null=True, blank=True)
     phone = models.CharField(max_length=20, verbose_name="联系方式", null=True, blank=True)
     email = models.CharField(max_length=20, verbose_name="电子邮箱", null=True, blank=True)

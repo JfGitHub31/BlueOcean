@@ -21,4 +21,10 @@ urlpatterns = [
     # 用户修改密码
     url(r'^password', views.author_password, name='author_password'),
 
+    # 修改用户资料
+    url(r'^update/$', views.author_update, name='author_update'),
+
+    # 用户详情路由
+    url(r'^(?P<author_id>\d+)/info/$', views.author_info, name='author_info'),
+
 ]

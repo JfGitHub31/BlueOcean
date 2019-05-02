@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传相片页面</title>
+</head>
+<body>
+<h1>上传相片页面</h1>
+
+<form method="POST" action="/photo/{{album.id}}/photo_upload/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>{{msg}}</h1>
+    相片名称: <input type="text" id="name" name="name"><p></p>
+    选择照片: <input type="file" id="path" name="path"><p></p>
+    照片描述: <textarea name="remark" id="remark">描述下你的照片吧~</textarea>
+    <button type="submit">上传照片</button>
+</form>
+
+</body>
+</html>

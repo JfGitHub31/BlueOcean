@@ -38,5 +38,5 @@ urlpatterns = [
     url(r'^album/', include('album.urls')),
 
     # 相片app
-    url(r'photo/', include('album.urls')),
+    url(r'^photo/', include('photo.urls')),
 ]

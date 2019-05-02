@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片详情页面</title>
+</head>
+<body>
+<h1>照片详情页面</h1>
+    <div><a><img src="/{{photo.path}}" width="300" height="300"></a></div>
+    <div>{{photo.name}}</div>
+    <div>{{photo.upload_time|date:'Y-m-d G:i:s'}}</div>
+    <div>照片描述:{% firstof photo.remark '你还没有添加描述哦～'%}</div>
+</body>
+</html>

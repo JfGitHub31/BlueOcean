@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户修改资料页面</title>
+</head>
+<body>
+<h1>用户修改资料页面</h1>
+</body>
+
+<div>
+    <div>{{request.session.login_user.realname}}的个人资料</div>
+    <form method="POST" action="/author/update/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <img src="/{{request.session.login_user.header_img}}" width="70" height="70">
+        请选择头像: <input type="file" name="header_img" id="header_img"><p></p>
+        姓名: <input type="text" name="realname" id="realname"><p></p>
+        年龄: <input type="text" name="age" id="age"><p></p>
+        性别: <input type="text" name="gender" id="gender"><p></p>
+        邮箱: <input type="email" name="email" id="email"><p></p>
+        手机: <input type="text" name="phone" id="phone"><p></p>
+        个人简介: <textarea id="intro" name="intro" cols="80" rows="10">个人简介</textarea>
+        <button type="submit">提交修改</button>
+    </form>
+
+</div>
+</html>

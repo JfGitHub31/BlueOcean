@@ -10,14 +10,15 @@
 
 <div>
     <div>
-        <img src="/{{album.cover}}">
+        <img src="/{{album.cover}}" width="70" height="70"/>
     </div>
     <div>相册名称:{{album.name}}</div>
 
     <div>创建时间:{{album.create_time|date:'Y-m-d G:i:s'}}</div>
     <div>照片数量:{{album.photo_count}}</div>
     <div>相册描述:{% firstof album.remark '你还没有添加描述哦～'%}</div>
-    <div><a href="/photo/{{album.id}}">查看相册</a></div>
+    <div><a href="/photo/{{album.id}}/">进入相册</a></div>
+    <div><a href="/album/{{album.id}}/delete/">删除相册</a></div>
 </div>
 
 </body>

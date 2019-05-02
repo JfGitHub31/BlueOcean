@@ -14,4 +14,7 @@ urlpatterns = [
 
     # 查看相册中所有照片
     url(r'^(?P<album_id>\d+)/$', views.photo_list, name='photo_list'),
+
+    # 删除照片路由
+    url(r'^(?P<photo_id>\d+)/delete/$', views.photo_delete, name='photo_delete')
 ]

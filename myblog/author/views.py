@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.core.urlresolvers import reverse
 from . import models
 
 
@@ -127,3 +128,50 @@ def author_password(request):
         # 跳转到登录页面
         return render(request, 'author/login.html', {'error_msg': '密码修改成功,请重新登录'})
 
+
+def author_update(request):
+    """
+    修改个人资料
+    :param request:
+    :return:
+    """
+    if request.method == "GET":
+        return render(request, 'author/author_update.html', {})
+
+    elif request.method == "POST":
+        # 获取数据并修改
+        realname = request.POST.get('realname')
+        age = request.POST.get('age')
+        gender = request.POST.get('gender')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        intro = request.POST.get('intro')
+        header_img = request.FILES.get('header_img')
+
+        # 获取当前用户
+        author = request.session['login_user']
+        author.realname = realname
+        author.age = age
+        author.gender = gender
+        author.email = email
+        author.phone = phone
+        author.intro = intro
+        author.header_img = header_img
+
+        author.save()
+        request.session['login_user'] = author
+
+        # 返回个人资料页面
+        return redirect(reverse('author_info', kwargs={'author_id': author.id}))
+
+
+def author_info(request, author_id):
+    """
+    查看个人资料视图处理函数
+    :param request:
+    :param author_id:
+    :return:
+    """
+    # 查询用户信息
+    author = models.Author.objects.get(pk=author_id)
+    return render(request, 'author/author_info.html', {'author': author})

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户详情页面</title>
+</head>
+<body>
+<h1>用户详情页面</h1>
+
+<div>
+    <img src="/{{author.header_img}}" width="70" height="70">
+    <div>名字:{% firstof author.email '你还没有名字哦～'%}</div>
+    <div>年龄:{% firstof author.age '0'%}岁</div>
+    <div>性别:{% firstof author.gender '男'%}</div>
+    <div>注册时间:{{author.join_time|date:'Y-m-d G:i:s'}}</div>
+    <div>最后修改时间:{{author.update_time|date:'Y-m-d G:i:s'}}</div>
+    <div>邮箱:{% firstof author.email '待完善'%}</div>
+    <div>电话:{% firstof author.phone '待完善'%}</div>
+    <div>简介:{% firstof author.intro '待完善'%}</div>
+</div>
+</body>
+</html>
